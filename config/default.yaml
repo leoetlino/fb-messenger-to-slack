@@ -1,0 +1,12 @@
+facebook:
+  email: ""
+  password: ""
+
+slack:
+  hookUrl: ""
+
+mapping:
+# - facebookThreadId: 1
+#   slackTargetChannel: "#facebook-1"
+# - facebookThreadId: 2
+#   slackTargetChannel: "#facebook-2"

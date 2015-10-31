@@ -1,0 +1,20 @@
+{
+  "name": "fb-messenger-to-slack",
+  "version": "1.0.0",
+  "description": "Post messages from Facebook Messenger to Slack",
+  "main": "bootstrap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Léo Lam",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "babel": "^5.8.23",
+    "bunyan": "^1.5.1",
+    "config": "^1.16.0",
+    "facebook-chat-api": "^1.0.2",
+    "js-yaml": "^3.4.3",
+    "lodash": "^3.10.1",
+    "node-slack": "0.0.7"
+  }
+}
