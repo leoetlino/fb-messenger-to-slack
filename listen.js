@@ -65,7 +65,7 @@ let listen = (api) => {
       moduleLogger.error(error);
       return;
     }
-    let mappingEntry = mapping.find(entry => entry.facebookThreadId === event.threadID);
+    let mappingEntry = mapping.find(entry => entry.facebookThreadId.toString() === event.threadID.toString());
     if (event.threadID && !mappingEntry) {
       return;
     }
