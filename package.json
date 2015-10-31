@@ -2,6 +2,7 @@
   "name": "fb-messenger-to-slack",
   "version": "1.0.0",
   "description": "Post messages from Facebook Messenger to Slack",
+  "repository": "leoetlino/fb-messenger-to-slack",
   "main": "bootstrap.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
