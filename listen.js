@@ -54,7 +54,7 @@ login({ email, password, forceLogin: true }, (error, api) => {
     return;
   }
   moduleLogger.info("Logged in");
-  api.setOptions({ logLevel: "silent" });
+  api.setOptions({ logLevel: "silent", selfListen: true });
   listen(api);
 });
 
