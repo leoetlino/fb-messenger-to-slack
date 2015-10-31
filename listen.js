@@ -5,7 +5,6 @@
  */
 
 let moduleLogger = log.child();
-let _ = require("lodash");
 
 // Configuration
 const { email, password } = config.get("facebook");
@@ -66,7 +65,7 @@ let listen = (api) => {
       moduleLogger.error(error);
       return;
     }
-    let mappingEntry = _.findWhere(mapping, { facebookThreadId: event.threadID });
+    let mappingEntry = mapping.find(entry => entry.facebookThreadId === event.threadID);
     if (event.threadID && !mappingEntry) {
       return;
     }
