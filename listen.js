@@ -97,6 +97,34 @@ let sendToSlack = (channel, event) => {
     "unfurl_links": true,
     "link_names": 1,
   });
+  if (Array.isArray(event.attachments)) {
+    event.attachments
+      .filter(attachment => attachment.type === "photo")
+      .forEach(attachment => {
+        let photoUrl = attachment.hiresUrl;
+        slack.send({
+          text: photoUrl,
+          channel,
+          username: `${event.senderName} (${event.threadName})`,
+          "icon_url": `https://graph.facebook.com/${event.senderID}/picture?type=square&width=200`,
+          "unfurl_links": true,
+          "link_names": 1,
+        });
+      });
+
+    event.attachments
+      .filter(attachment => attachment.type === "file")
+      .forEach(attachment => {
+        slack.send({
+          text: `${attachment.url} (${attachment.name}), ${attachment.mimeType})`,
+          channel,
+          username: `${event.senderName} (${event.threadName})`,
+          "icon_url": `https://graph.facebook.com/${event.senderID}/picture?type=square&width=200`,
+          "unfurl_links": true,
+          "link_names": 1,
+        });
+      });
+  }
 };
 
 let markAsRead = (api, event) => {
