@@ -62,8 +62,8 @@ let listen = (api) => {
   moduleLogger.info("Listening for events");
   api.listen((error, event) => {
     if (error) {
-      moduleLogger.error(error);
-      return;
+      moduleLogger.fatal(error, "Failed to listen for events");
+      throw error;
     }
     let mappingEntry = mapping.find(entry => entry.facebookThreadId.toString() === event.threadID.toString());
     if (event.threadID && !mappingEntry) {
