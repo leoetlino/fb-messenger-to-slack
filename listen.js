@@ -58,22 +58,14 @@ login({ email, password, forceLogin: true }, (error, api) => {
   listen(api);
 });
 
-let tryCount = 0;
 let listen = (api) => {
-  tryCount++;
   moduleLogger.info("Listening for events");
   api.listen((error, event) => {
     if (error) {
-      if (tryCount >= 5) {
-        moduleLogger.fatal(error, "Failed to listen for events for the fifth time, aborting");
-        process.exit(1);
-        return;
-      }
-      moduleLogger.error(error, "Failed to listen for events, retrying");
-      listen(api);
+      moduleLogger.fatal(error, "Failed to listen for events, aborting");
+      process.exit(1);
       return;
     }
-    tryCount = 0;
     let mappingEntry = mapping.find(entry => entry.facebookThreadId.toString() === event.threadID.toString());
     if (event.threadID && !mappingEntry) {
       return;
