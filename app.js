@@ -16,4 +16,9 @@ process.on("uncaughtException", (error) => {
   process.exit(1);
 });
 
+process.on("unhandledRejection", (reason, promise) => {
+  log.fatal({ reason, promise }, "Unhandled promise rejection");
+  throw new Error("Unhandled rejection: " + reason);
+});
+
 require("./listen");
